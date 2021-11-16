@@ -13,6 +13,7 @@ class LoginAction extends Action
 {
     protected function action(): Response
     {
+
         // TODO: Implement action() method.
         $payload = $this->request->getBody();
         $data = json_decode($payload, true);
