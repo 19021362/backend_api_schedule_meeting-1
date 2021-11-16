@@ -9,6 +9,7 @@ return function (ContainerInterface $container) {
             'displayErrorDetails' => true,
             'logErrors' => true,
             'logErrorDetails' => true,
+            'key' => 'secret',
             'logger' => [
                 'name' => 'slim-app',
                 'path' => __DIR__ . '/../logs/app.log',

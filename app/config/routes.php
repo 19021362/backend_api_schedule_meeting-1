@@ -6,8 +6,6 @@ use App\actions\LoginAction;
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
-use Psr\Log\LoggerInterface;
-use Illuminate\Database\Capsule\Manager;
 use App\controllers\UserController;
 use App\controllers\RoomController;
 use App\controllers\MeetingController;
@@ -22,16 +20,6 @@ return function (App $app) {
         }
         return $response;
     });
-
-//    $app->get('/user/{id}', function (Request $request, Response $response, $args) {
-//        $id = $args['id'];
-//        $response->getBody()->write("Hello $id");
-//        return $response;
-//    });
-
-
-//        die('There is no hope!');
-//
 
     $app->post('/login', LoginAction::class);
 
@@ -57,5 +45,6 @@ return function (App $app) {
     $app->patch('/meeting/{id}', MeetingController::class . ':update');
 
     //$app->get('/meeting/{id}/participant', MeetingController::class . ':get');
+
 
 };
