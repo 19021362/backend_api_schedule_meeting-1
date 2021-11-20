@@ -6,18 +6,20 @@ use App\actions\LoginAction;
 use Slim\App;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
+use Slim\Interfaces\RouteCollectorProxyInterface as Group;
 use App\controllers\UserController;
 use App\controllers\RoomController;
 use App\controllers\MeetingController;
 
 return function (App $app) {
 
+    $app->options('/', function (Request $request, Response $response) {
+        // CORS Pre-Flight OPTIONS Request Handler
+        return $response;
+    });
+
     $app->get('/', function (Request $request, Response $response, $args) {
-        if ( ! class_exists('MeetingController')) {
-            $response->getBody()->write('Success!');
-        } else {
-            $response->getBody()->write('Failed!');
-        }
+        $response->getBody()->write('Success!');
         return $response;
     });
 
@@ -46,5 +48,10 @@ return function (App $app) {
 
     //$app->get('/meeting/{id}/participant', MeetingController::class . ':get');
 
+//    $app->post('/v2/login', LoginAction::class);
+//
+//    $app->group('/v2/api_admin', function (Group $group) {
+//        //$group->get('/');
+//    });
 
 };
