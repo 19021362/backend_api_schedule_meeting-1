@@ -62,8 +62,8 @@ class RoomController
     }
 
     public function delete($request, $response, $args): Response {
-        $user_id = $args['id'];
-        $isSuccess = $this->room_table->where('user_id', $user_id)->delete();
+        $room_id = $args['id'];
+        $isSuccess = $this->room_table->where('room_id', $room_id)->delete();
         $status = 200;
         $data = array("message" => "sucess");
         if (!$isSuccess) {
@@ -79,7 +79,7 @@ class RoomController
     public function update($request, $response, $args): Response {
         $room_id = $args['id'];
         $data = json_decode($request->getBody(), true);
-        $isSuccess = $this->user_table->where('user_id', $room_id)->update($data);
+        $isSuccess = $this->room_table->where('room_id', $room_id)->update($data);
         $status = 200;
         $data = array("message" => "sucess");
         if (!$isSuccess) {

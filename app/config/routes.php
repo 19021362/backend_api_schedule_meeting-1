@@ -13,9 +13,9 @@ use App\controllers\MeetingController;
 
 return function (App $app) {
 
-    $app->options('/', function (Request $request, Response $response) {
+    $app->options('[/{params:.*}]', function (Request $request, Response $response) {
         // CORS Pre-Flight OPTIONS Request Handler
-        return $response;
+        return $response->withStatus(200);
     });
 
     $app->get('/', function (Request $request, Response $response, $args) {
